@@ -1,0 +1,6 @@
+{
+  "name": "VraiPrix Maroc",
+  "description": "Avant d’acheter, connais le vrai prix. Application mobile PWA pour scanner, calculer au kilo/litre et comparer les prix réels au Maroc.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
