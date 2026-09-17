@@ -24,11 +24,53 @@ import { stopAllAudio } from './utils/audio';
 import { evaluateNewPrice } from './utils/priceSignal';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname === '/privacy' || pathname === '/privacy/') {
+        return 'privacy';
+      }
+    }
+    return 'home';
+  });
   const [observations, setObservations] = useState<PriceObservation[]>([]);
   const [preferences, setPreferences] = useState<UserPreferences>(loadPreferences());
   const [scanSessionTrigger, setScanSessionTrigger] = useState(0);
   const [lastEvaluationResult, setLastEvaluationResult] = useState<PriceSignalResult | null>(null);
+
+  // Sync browser URL and title with activeTab
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (activeTab === 'privacy') {
+      document.title = 'Politique de confidentialité — VraiPrix Maroc';
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname !== '/privacy' && pathname !== '/privacy/') {
+        window.history.pushState(null, '', '/privacy');
+      }
+    } else {
+      document.title = 'VraiPrix Maroc — Avant d’acheter, connais le vrai prix';
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname === '/privacy' || pathname === '/privacy/') {
+        window.history.pushState(null, '', '/');
+      }
+    }
+  }, [activeTab]);
+
+  // Handle browser navigation (Back / Forward)
+  useEffect(() => {
+    const handlePopState = () => {
+      const pathname = window.location.pathname.toLowerCase();
+      if (pathname === '/privacy' || pathname === '/privacy/') {
+        setActiveTab('privacy');
+      } else {
+        setActiveTab((prev) => (prev === 'privacy' ? 'home' : prev));
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Defensive safety: whenever activeTab changes away from scanner, stop all audio
   useEffect(() => {
@@ -42,6 +84,7 @@ export default function App() {
       stopAllAudio();
     }
     setActiveTab(newTab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   /**

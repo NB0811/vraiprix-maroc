@@ -308,23 +308,34 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       )}
 
       {/* Privacy & App Info */}
-      <div className="p-4 bg-stone-100 rounded-3xl text-xs text-stone-600 space-y-2">
+      <div className="p-4 bg-stone-100 rounded-3xl text-xs text-stone-600 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-stone-800">VraiPrix Maroc PWA</span>
+          <div className="flex items-center gap-1.5">
+            <Shield className="w-4 h-4 text-[#006233]" />
+            <span className="font-bold text-stone-800">VraiPrix Maroc PWA</span>
+          </div>
           <span className="text-[10px] text-stone-500 font-mono">v1.0.0</span>
         </div>
         <p className="text-[11px] text-stone-500 leading-relaxed">
           Application 100% respectueuse de la vie privée. Fonctionne hors-ligne sans compte
-          obligatoire.
+          obligatoire. Vos données et observations restent enregistrées sur votre appareil.
         </p>
 
-        <button
-          onClick={() => setActiveTab('privacy')}
-          className="text-xs font-bold text-[#006233] flex items-center gap-1 hover:underline pt-1"
+        <a
+          id="link-privacy-policy"
+          href="/privacy"
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab('privacy');
+          }}
+          className="w-full py-2.5 px-3 bg-white hover:bg-emerald-50 text-[#006233] border border-stone-200 rounded-xl text-xs font-bold transition flex items-center justify-between shadow-xs cursor-pointer"
         >
-          <Shield className="w-3.5 h-3.5" />
-          <span>Lire la politique de confidentialité</span>
-        </button>
+          <div className="flex items-center gap-2">
+            <Shield className="w-3.5 h-3.5" />
+            <span>Politique de confidentialité</span>
+          </div>
+          <span className="text-stone-400 group-hover:text-[#006233]">→</span>
+        </a>
       </div>
     </div>
   );
