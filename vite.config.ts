@@ -1,3 +1,4 @@
+import fs from 'fs';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -69,6 +70,17 @@ export default defineConfig(() => {
           type: 'module',
         },
       }),
+      {
+        name: 'spa-fallback-200-html',
+        closeBundle() {
+          const distDir = path.resolve(__dirname, 'dist');
+          const indexPath = path.join(distDir, 'index.html');
+          const fallbackPath = path.join(distDir, '200.html');
+          if (fs.existsSync(indexPath)) {
+            fs.copyFileSync(indexPath, fallbackPath);
+          }
+        },
+      },
     ],
     resolve: {
       alias: {
