@@ -19,14 +19,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={() => setActiveTab('home')}
           className="flex items-center gap-2.5 text-left group focus:outline-none"
         >
-          {/* Moroccan Flag & Logo Badge */}
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-[#006233] to-[#004d27] flex items-center justify-center shadow-xs border border-emerald-800/20 group-hover:scale-105 transition">
-            {/* Moroccan 5-pointed star */}
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#F3C64F]">
-              <polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" />
-            </svg>
-            <span className="absolute -top-1 -right-1 text-[10px]">🇲🇦</span>
-          </div>
+          {/* Official VraiPrix Maroc Logo */}
+          <img
+            src="/icon.svg"
+            alt="Logo VraiPrix Maroc"
+            className="w-9 h-9 rounded-xl object-contain shadow-xs border border-stone-200/80 group-hover:scale-105 transition"
+          />
 
           <div>
             <div className="flex items-center gap-1.5">
