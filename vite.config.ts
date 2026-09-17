@@ -46,6 +46,7 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+          navigateFallbackDenylist: [/^\/\.well-known/],
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/world\.openfoodfacts\.org\/api\/.*/i,

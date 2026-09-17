@@ -1,0 +1,5 @@
+# Exclude Android Digital Asset Links from SPA fallback
+/.well-known/assetlinks.json /.well-known/assetlinks.json 200
+
+# Single Page Application fallback for client-side routing
+/* /index.html 200

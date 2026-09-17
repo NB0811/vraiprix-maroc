@@ -1,0 +1,6 @@
+# Explicitly allow .well-known directory and static config files for Cloudflare/Wrangler
+!.well-known
+!.well-known/**
+!_headers
+!_redirects
+!_routes.json
