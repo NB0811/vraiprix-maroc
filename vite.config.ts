@@ -47,7 +47,7 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
-          navigateFallbackDenylist: [/^\/\.well-known/],
+          navigateFallbackDenylist: [/^\/\.well-known/, /^\/privacy/],
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/world\.openfoodfacts\.org\/api\/.*/i,
@@ -78,6 +78,14 @@ export default defineConfig(() => {
           const fallbackPath = path.join(distDir, '200.html');
           if (fs.existsSync(indexPath)) {
             fs.copyFileSync(indexPath, fallbackPath);
+          }
+          const privacyHtml = path.join(distDir, 'privacy.html');
+          const privacyDir = path.join(distDir, 'privacy');
+          if (fs.existsSync(privacyHtml)) {
+            if (!fs.existsSync(privacyDir)) {
+              fs.mkdirSync(privacyDir, { recursive: true });
+            }
+            fs.copyFileSync(privacyHtml, path.join(privacyDir, 'index.html'));
           }
         },
       },

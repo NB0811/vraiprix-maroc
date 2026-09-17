@@ -323,11 +323,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 
         <a
           id="link-privacy-policy"
-          href="/privacy"
-          onClick={(e) => {
-            e.preventDefault();
-            setActiveTab('privacy');
-          }}
+          href="/privacy.html"
           className="w-full py-2.5 px-3 bg-white hover:bg-emerald-50 text-[#006233] border border-stone-200 rounded-xl text-xs font-bold transition flex items-center justify-between shadow-xs cursor-pointer"
         >
           <div className="flex items-center gap-2">

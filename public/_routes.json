@@ -10,6 +10,9 @@
     "/pwa-*.png",
     "/manifest.webmanifest",
     "/sw.js",
-    "/registerSW.js"
+    "/registerSW.js",
+    "/privacy.html",
+    "/privacy",
+    "/privacy/*"
   ]
 }

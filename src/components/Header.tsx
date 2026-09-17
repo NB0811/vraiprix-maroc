@@ -50,18 +50,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             </div>
           )}
 
-          <button
-            onClick={() => setActiveTab('privacy')}
+          <a
+            href="/privacy.html"
             title="Politique de confidentialité & Données"
-            className={`p-2 rounded-xl text-xs transition ${
-              activeTab === 'privacy'
-                ? 'bg-emerald-50 text-[#006233]'
-                : 'text-stone-500 hover:text-stone-800 hover:bg-stone-100'
-            }`}
+            className="p-2 rounded-xl text-xs transition text-stone-500 hover:text-stone-800 hover:bg-stone-100"
             aria-label="Confidentialité"
           >
             <Shield className="w-4 h-4" />
-          </button>
+          </a>
 
           <button
             onClick={() => setActiveTab('settings')}
