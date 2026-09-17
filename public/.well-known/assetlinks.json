@@ -1,12 +1,13 @@
 [
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "A_REMPLACER_PAR_LE_PACKAGE_NAME_REEL",
-      "sha256_cert_fingerprints": [
-        "A_REMPLACER_PAR_LE_SHA256_REEL_DU_CERTIFICAT"
-      ]
-    }
-  }
+      {
+          "relation": ["delegate_permission/common.handle_all_urls"],
+              "target": {
+                    "namespace": "android_app",
+                          "package_name": "ma.vraiprix.app",
+                                "sha256_cert_fingerprints": [
+                                        "F7:10:68:7F:F2:4F:45:6D:EB:A0:59:0D:76:FB:C2:6D:54:15:77:E2:1E:26:68:94:B1:94:4C:69:36:A1:61:43"
+                                              ]
+                                                  }
+                                                    }
+                                                    ]
 ]
